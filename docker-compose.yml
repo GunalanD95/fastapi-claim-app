@@ -1,0 +1,11 @@
+version: '3'
+services:
+    core_api:
+        build:  .
+        container_name: "fast_api_app"
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./fast_api_app:/fast_api_app
+
+        command: uvicorn fast_api_app.main:app --host 0.0.0.0 
