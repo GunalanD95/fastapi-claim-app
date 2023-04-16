@@ -32,7 +32,7 @@ def create_claim(claim_list,db):
         db.commit()
         db.refresh(new_claim)
 
-    return {'message':'Sucess all the claims has been added to database'}
+    return {'message':'Claims processed successfully.'}
 
 
 # Function to compute  claim
