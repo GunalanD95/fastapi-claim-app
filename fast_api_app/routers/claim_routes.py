@@ -2,7 +2,7 @@ from fastapi import APIRouter ,  Depends
 # importing the db connection
 from ..database.db import  get_db
 from ..repos import claim 
-from ..schemas.schema import ClaimModel , ClaimsResponse
+from ..schemas.schema import ClaimsResponse
 from sqlalchemy.orm import Session
 
 

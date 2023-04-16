@@ -16,13 +16,23 @@
    - What needs to be done if there is a failure in either service and steps need to be unwinded.
    - Multiple instances of either service are running concurrently to handle a large volume of claims.
 
-  1. Using Queue can be good approach i think .
-  2. When the claim process happens , we will send everything to Some Queue .
-  3. Then Payments downstream service will take the data (net_fee) computed by claim process
-  4. by this way we can avoid downtime of anyservice too , the queue will handle .
+  1. Using Queue (RabbitMQ etc) can be good approach i think .
+  2. basically after claim process we will publish to the Queue 
+  3. Then the Payments downstream service would subscribe to claims (net_fee) computed by claim process
+  4. by this way we can avoid issues during downtime of any of the service too , the queue will handle .
   5. this approach will make sure resilient to failures.
   6. since fastapi is async already , it handles requests concurrently
 ```
+
+
+### RUN USING DOCKER COMPOSE
+
+#### STEP 1
+```
+docker-compose up
+```
+
+
 
 
 ### BUILD AND RUN USING DOCKER IMAGE
@@ -138,6 +148,8 @@ py -3 tests.py
 
 ### ULTIIZED RESOURCES 
 
-- TESTING -> https://fastapi.tiangolo.com/tutorial/testing/
+- TESTING   -> https://fastapi.tiangolo.com/tutorial/testing/
 
-- DOCKER  -> https://docs.docker.com/compose/compose-file/
+- DOCKER    -> https://docs.docker.com/compose/compose-file/
+
+- RabbitMQ  -> https://www.rabbitmq.com/tutorials/tutorial-one-python.html

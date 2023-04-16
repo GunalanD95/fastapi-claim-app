@@ -1,8 +1,7 @@
-from fastapi import HTTPException  , Depends
+from fastapi import HTTPException  
 from ..schemas.schema import ClaimModel
 from ..model import models
 from datetime import datetime
-from ..database.db import SessionLocal , get_db
 import random 
 
 # validator
